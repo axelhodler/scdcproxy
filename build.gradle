@@ -7,6 +7,7 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'org.springframework.cloud:spring-cloud-contract-gradle-plugin:1.2.4.RELEASE'
 	}
 }
 
@@ -32,6 +33,8 @@ ext {
 
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-openfeign')
+	testCompile "javax.ws.rs:javax.ws.rs-api:2.1"
+	testCompile "org.springframework.boot:spring-boot-starter-jersey"
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
 	testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
@@ -40,5 +43,21 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:1.2.4.RELEASE"
+	}
+}
+
+apply plugin: 'spring-cloud-contract'
+
+contracts {
+	testMode = 'JaxRsClient'
+	baseClassForTests = 'com.hodler.scdcproxy.GoogleMapsBase'
+	basePackageForTests = 'com.hodler.scdcproxy'
+}
+
+test {
+	testLogging {
+		events "PASSED", "FAILED", "SKIPPED"
+		exceptionFormat "full"
 	}
 }
