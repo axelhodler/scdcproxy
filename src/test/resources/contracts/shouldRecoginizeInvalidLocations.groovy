@@ -4,8 +4,8 @@ org.springframework.cloud.contract.spec.Contract.make {
 
         url("/maps/api/distancematrix/json") {
             queryParameters {
-                parameter 'origins': '48.83,8.91' // Weissach
-                parameter 'destinations': '1111111.1,2.2' // Not a location, invalid coordinate
+                parameter 'origins': '52.52,13.4' // Berlin
+                parameter 'destinations': '1234567.1,2.2' // Not a location, invalid coordinate
             }
         }
     }
