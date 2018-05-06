@@ -16,7 +16,7 @@ org.springframework.cloud.contract.spec.Contract.make {
             rows: [[
                        elements: [[
                                       duration: [
-                                          value: 22738
+                                          value: $(stub(22738), test(regex('\\d+')))
                                       ]
                                   ]]
                    ]]
