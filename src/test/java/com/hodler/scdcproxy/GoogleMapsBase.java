@@ -1,6 +1,5 @@
 package com.hodler.scdcproxy;
 
-import org.glassfish.jersey.client.ClientProperties;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,8 +24,6 @@ public abstract class GoogleMapsBase {
     @Before
     public void init_http_client() {
         Client client = ClientBuilder.newClient();
-        // Since we are asserting 302 in some contracts
-        client.property(ClientProperties.FOLLOW_REDIRECTS, Boolean.FALSE);
 
         ClientRequestFilter requestFilter = rc -> {
             String keyedUri = String.format("%s&key=%s", rc.getUri().toString(), apiKey);
