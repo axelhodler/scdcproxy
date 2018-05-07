@@ -1,4 +1,4 @@
-package com.hodler.scdcproxy;
+package co.hodler.scdcproxy;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;

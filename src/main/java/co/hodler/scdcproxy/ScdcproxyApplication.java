@@ -1,4 +1,4 @@
-package com.hodler.scdcproxy;
+package co.hodler.scdcproxy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
